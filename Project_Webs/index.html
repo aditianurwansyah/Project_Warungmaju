@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Maju</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        h1 { color: #2c3e50; }
+        .loader { margin: 20px; font-size: 1.2em; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <h1>Warung Maju</h1>
+    <p>Sistem Manajemen Toko Sembako UMKM</p>
+    <div class="loader">Memeriksa sesi...</div>
+
+    <script>
+        // Redirect otomatis berdasarkan sesi
+        fetch('auth/check_session.php')
+            .then(res => res.json())
+            .then(data => {
+                if (data.logged) {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    window.location.href = 'login.html';
+                }
+            })
+            .catch(() => {
+                document.querySelector('.loader').textContent = 'Gagal koneksi ke server';
+            });
+    </script>
+</body>
+</html>
