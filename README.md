@@ -22,6 +22,9 @@
   <h1>Session/cookies + pengecekan ganda</h1>
   <p>di dalam login dan register telah memberikan session dan cookies nya pada saat cookies berjalan nya itu ketika dari login nya tidak sesuai dan kalau register telah di pasang session</p>
 </li>
+<img width="1152" height="140" alt="Screenshot 2026-01-07 101824" src="https://github.com/user-attachments/assets/e2f2e1c4-d354-4f4f-be5c-a721e6503b47" />
+
+</li>
 <li>
   <h1>Deploy online</h1>
   <p>Dapat di-deploy di layanan gratis/low-cost seperti Cloudflare</p>
