@@ -1,6 +1,7 @@
 # Project_Warungmaju
 
-<img width="1152" height="140" alt="Screenshot 2026-01-07 101824" src="https://github.com/user-attachments/assets/e2f2e1c4-d354-4f4f-be5c-a721e6503b47" />
+<img width="1152" height="140" alt="Screenshot 2026-01-07 101824" src="https://github.com/user-attachments/assets/8565a89e-b81f-4883-8aad-970d49bfeae4" />
+
 <br>
 <h1>Warungmaju</h1>
 <p>merupakan Toko sembako adalah UMKM nyata di Indonesia — sangat relevan dengan minat Anda pada budaya/kuliner lokal (misal: pencatatan produk lokal seperti kerupuk udang Sidoarjo, gula aren, bumbu racik tradisional, dll.)</p>
