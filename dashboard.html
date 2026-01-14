@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🏠 Dashboard — Warung Maju</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    body { background: #f8f9fa; }
+    .stat-card {
+      text-align: center;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+    .stat-card:hover { transform: translateY(-5px); }
+    .stat-value { font-size: 2.2rem; font-weight: 700; }
+    .stat-label { font-size: 1rem; color: #6c757d; }
+    .chart-container { height: 250px; margin-top: 20px; }
+    .nav-btn { min-width: 180px; }
+    .section-title { background: #e9ecef; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <header class="bg-dark text-white p-3 shadow-sm">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">🏠 Warung Maju</h4>
+      <div class="d-flex align-items-center gap-3">
+        <span id="currentUser" class="d-none d-md-inline"></span>
+        <button id="btnLogout" class="btn btn-outline-light btn-sm">🚪 Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container mt-4">
+    <!-- Statistik Utama -->
+    <div class="row g-4 mb-4">
+      <div class="col-12 col-md-4">
+        <div class="stat-card bg-white">
+          <div class="stat-value text-primary" id="totalProduk">—</div>
+          <div class="stat-label">Total Produk</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="stat-card bg-white">
+          <div class="stat-value text-success" id="totalStok">—</div>
+          <div class="stat-label">Total Stok</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="stat-card bg-white">
+          <div class="stat-value text-info" id="transaksiHari">0</div>
+          <div class="stat-label">Transaksi Hari Ini</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ringkasan Mingguan -->
+    <div class="row mb-4">
+      <div class="col-12 col-md-6">
+        <div class="card h-100">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">📈 Ringkasan Minggu Ini</h5>
+          </div>
+          <div class="card-body">
+            <h4>💰 Penjualan: <span id="penjualanMinggu">Rp 0</span></h4>
+            <h4>🧾 Transaksi: <span id="transaksiMinggu">0</span></h4>
+            <p class="text-muted mt-3 mb-0">
+              <!-- Data dari <strong><?= date('d M Y', strtotime('-6 days')) ?></strong> 
+              sampai <strong><?= date('d M Y') ?></strong> -->
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stok per Kategori -->
+      <div class="col-12 col-md-6">
+        <!-- <div class="card h-100">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">📦 Stok per Kategori</h5>
+          </div>
+          <div class="card-body">
+            <canvas id="stokChart" class="chart-container"></canvas>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- Navigasi Cepat -->
+    <div class="card">
+      <div class="card-header bg-secondary text-white">
+        <h5 class="mb-0">🚀 Navigasi Cepat</h5>
+      </div>
+      <div class="card-body">
+        <div class="d-flex flex-wrap gap-3">
+          <a href="produk.php" class="btn btn-primary nav-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box me-1" viewBox="0 0 16 16">
+              <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.83l-6.5 2.6v-2.37L7.5 4.5v10.262z"/>
+            </svg>
+            Kelola Produk
+          </a>
+          <a href="transaksi.html" class="btn btn-warning nav-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash me-1" viewBox="0 0 16 16">
+              <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0v2h2V4H3zm6 2v2h2V6H9zm3-2v2h2V4h-2z"/>
+            </svg>
+            Input Penjualan
+          </a>
+          <a href="laporan.html" class="btn btn-info nav-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-bar-graph me-1" viewBox="0 0 16 16">
+              <path d="M10 13.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-6a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v6z"/>
+              <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+            </svg>
+            Laporan
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ✅ Utility
+    function formatRupiah(angka) {
+      return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0
+      }).format(angka);
+    }
+
+    // ✅ Cek session & muat data
+    async function initDashboard() {
+      try {
+        // ————— 1. Cek session —————
+        const sessionRes = await fetch('auth/check_session.php');
+        const session = await sessionRes.json();
+        if (!session.logged) {
+          window.location.href = 'login.html';
+          return;
+        }
+        document.getElementById('currentUser').textContent = `👤 ${session.username}`;
+
+        // ————— 2. Muat statistik —————
+        await Promise.all([
+          loadStatProduk(),
+          loadTransaksiHariIni(),
+          loadRingkasanMinggu(),
+          loadStokKategori()
+        ]);
+
+      } catch (err) {
+        console.error('Init error:', err);
+        alert('❌ Gagal memuat dashboard. Coba refresh.');
+      }
+    }
+
+    // ✅ Total Produk & Stok
+    async function loadStatProduk() {
+      try {
+        const [resProduk, resStok] = await Promise.all([
+          fetch('api/produk/read.php?type=summary'),
+          fetch('api/produk/read.php?type=stok_total')
+        ]);
+
+        const produk = await resProduk.json();
+        const stok = await resStok.json();
+
+        document.getElementById('totalProduk').textContent = produk.count || 0;
+        document.getElementById('totalStok').textContent = stok.total || 0;
+      } catch (err) {
+        console.warn('Gagal muat statistik produk:', err);
+      }
+    }
+
+    // ✅ Transaksi Hari Ini
+    async function loadTransaksiHariIni() {
+      try {
+        const res = await fetch('api/transaksi/read.php?type=hari_ini');
+        const data = await res.json();
+        document.getElementById('transaksiHari').textContent = data.count || 0;
+      } catch (err) {
+        console.warn('Gagal muat transaksi hari ini:', err);
+      }
+    }
+
+    // ✅ Ringkasan Minggu Ini
+    async function loadRingkasanMinggu() {
+      try {
+        const res = await fetch('api/transaksi/read.php?type=summary');
+        const data = await res.json();
+        
+        document.getElementById('transaksiMinggu').textContent = data.transaksi_minggu || 0;
+        document.getElementById('penjualanMinggu').textContent = formatRupiah(data.total_penjualan || 0);
+      } catch (err) {
+        console.warn('Gagal muat ringkasan minggu:', err);
+      }
+    }
+
+    // ✅ Stok per Kategori
+    async function loadStokKategori() {
+      try {
+        // Ambil data produk dengan kategori
+        const res = await fetch('api/produk/read.php');
+        const produk = await res.json();
+
+        // Kelompokkan stok per kategori
+        const kategoriMap = new Map();
+        produk.forEach(p => {
+          const kat = p.kategori || 'Lainnya';
+          const stok = p.stok || 0;
+          kategoriMap.set(kat, (kategoriMap.get(kat) || 0) + stok);
+        });
+
+        // Siapkan data untuk Chart.js
+        const labels = Array.from(kategoriMap.keys());
+        const data = Array.from(kategoriMap.values());
+
+        // Render grafik
+        const ctx = document.getElementById('stokChart').getContext('2d');
+        
+        // Hancurkan chart lama jika ada
+        if (window.stokChart) window.stokChart.destroy();
+
+        window.stokChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Stok Tersedia',
+               data,
+              backgroundColor: [
+                '#4e73df', '#1cc88a', '#36b9cc',
+                '#f6c23e', '#e74a3b', '#858796'
+              ].slice(0, labels.length),
+              borderWidth: 0,
+              borderRadius: 6,
+              barPercentage: 0.6
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: (context) => `${context.parsed.y} unit`
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { precision: 0 }
+              }
+            }
+          }
+        });
+
+      } catch (err) {
+        console.warn('Gagal muat stok kategori:', err);
+      }
+    }
+
+    // ✅ Logout
+    document.getElementById('btnLogout').onclick = async () => {
+      if (confirm('Yakin ingin keluar?')) {
+        try {
+          await fetch('auth/logout.php');
+          window.location.href = 'login.html';
+        } catch (err) {
+          window.location.href = 'login.html';
+        }
+      }
+    };
+
+    // ✅ Inisialisasi
+    document.addEventListener('DOMContentLoaded', initDashboard);
+  </script>
+</body>
+</html>
+<footer>
+  <div class="text-center p-3 bg-dark text-white mt-4">
+     <p class="mb-0">@Copyright by 23552011329_AditiaNurwansyah_TIFRP23CNSA_UASWEB1</p>
+    &copy; 2024 Warung Maju. All rights reserved.
+  </div>
+</footer>
