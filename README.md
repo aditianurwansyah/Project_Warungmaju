@@ -31,3 +31,5 @@
   <p>Dapat di-deploy di layanan gratis/low-cost seperti Cloudflare</p>
   <p>dan juga dapat di hosting melalui github.io dll</p>
 </li>
+<p>============================================================================================================</p>
+<p>Tools yang digunakan:  Visual Studio Code</p>
