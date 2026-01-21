@@ -7,6 +7,9 @@
 <p>merupakan Toko sembako adalah UMKM nyata di Indonesia — sangat relevan dengan minat Anda pada budaya/kuliner lokal (misal: pencatatan produk lokal seperti kerupuk udang Sidoarjo, gula aren, bumbu racik tradisional, dll.)</p>
 <p>yang dimana project warungmaju ini memiliki ketentuan seperti:</p>
 <br>
+<p>link web yang di hosting:</p>
+<a href= "https://webwarungmajuu.wuaze.com/Project_Webs/login.html"></a> 
+<p>=========================================================================</p>
 <li>
   <h1>Backend dan frontend terintegrasi</h1>
   <p>✅ Frontend: HTML + JavaScript (DOM, Fetch API)<br>✅ Backend: PHP (procedural/OOP) + MySQL</p>
