@@ -8,7 +8,7 @@
 <p>yang dimana project warungmaju ini memiliki ketentuan seperti:</p>
 <br>
 <p>link web yang di hosting:</p>
-<p>Webwarungmaju<a href= "https://webwarungmajuu.wuaze.com/Project_Webs/login.html"></a></p>
+<p>Webwarungmaju<a href= "https://webwarungmajuu.wuaze.com/Project_Webs/login.html"></p></a>
 <p>=========================================================================</p>
 <li>
   <h1>Backend dan frontend terintegrasi</h1>
@@ -32,7 +32,7 @@
 <li>
   <h1>Deploy online</h1>
   <p>Dapat di-deploy di layanan gratis/low-cost seperti Cloudflare</p>
-  <p>dan juga dapat di hosting melalui github.io dll</p>
+  <p>dan juga dapat di hosting melalui infinityfree dll yang support dengan file tersebut</p>
 </li>
 <p>============================================================================================================</p>
 <p>Tools yang digunakan:  Visual Studio Code</p>
