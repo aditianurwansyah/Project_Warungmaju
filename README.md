@@ -8,7 +8,7 @@
 <p>yang dimana project warungmaju ini memiliki ketentuan seperti:</p>
 <br>
 <p>link web yang di hosting:</p>
-<p><a href= "https://webwarungmajuu.wuaze.com/Project_Webs/login.html">Webwarungmaju</p></a>
+<p><a href= "https://webwarungmajuu.wuaze.com/Project_Webs/index.html">Webwarungmaju</p></a>
 <p>=========================================================================</p>
 <li>
   <h1>Backend dan frontend terintegrasi</h1>
