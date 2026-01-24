@@ -9,6 +9,9 @@
 <br>
 <p>link web yang di hosting:</p>
 <p><a href= "https://webwarungmajuu.wuaze.com/Project_Webs/index.html">Webwarungmaju</p></a>
+<br>
+<p>link rekaman video:</p>
+<p><a href="https://youtu.be/9vRPspHA0dc">sistemUMKMwarungmaju</p></a>
 <p>=========================================================================</p>
 <li>
   <h1>Backend dan frontend terintegrasi</h1>
