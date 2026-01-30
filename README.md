@@ -34,6 +34,8 @@
 <li>
   <h1>CRUD penuh</h1>
   <p>✅ CRUD untuk:<br>– Produk (nama, harga, stok)<br>– Kategori<br>– Transaksi (penjualan)<br>– Pengguna (kasir)</p>
+  <img width="1918" height="861" alt="Screenshot 2026-01-18 123037" src="https://github.com/user-attachments/assets/e35010ac-31b0-4f63-a204-6cf8bce2ecab" />
+
 </li>
 <li>
   <h1>Session/cookies + pengecekan ganda</h1>
